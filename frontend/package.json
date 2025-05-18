@@ -1,0 +1,58 @@
+{
+  "name": "prompt.rip",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build --emptyOutDir",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "tailwind": "npx tailwindcss -i ./src/index.css -o ./src/tailwind.css --watch"
+  },
+  "dependencies": {
+    "@dicebear/collection": "^9.2.2",
+    "@dicebear/core": "^9.2.2",
+    "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
+    "@privy-io/react-auth": "^2.13.1",
+    "@rollup/plugin-inject": "^5.0.5",
+    "@solana/spl-token": "^0.4.13",
+    "@solana/wallet-adapter-base": "^0.9.23",
+    "@solana/wallet-adapter-phantom": "^0.9.24",
+    "@solana/wallet-adapter-react": "^0.15.35",
+    "@solana/wallet-adapter-react-ui": "^0.9.34",
+    "@solana/web3.js": "^1.89.1",
+    "axios": "^1.6.7",
+    "bs58": "^5.0.0",
+    "buffer": "^6.0.3",
+    "react": "^18.2.0",
+    "react-code-blocks": "^0.1.6",
+    "react-countup": "^6.5.3",
+    "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.5.1",
+    "react-icons": "^5.0.1",
+    "react-markdown": "^9.0.3",
+    "react-router-dom": "^6.22.3",
+    "react-spinners": "^0.13.8",
+    "react-syntax-highlighter": "^15.6.1",
+    "react-timeago": "^7.2.0",
+    "react-timer-hook": "^3.0.8",
+    "remark-gfm": "^4.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-react": "^7.26.3",
+    "@vitejs/plugin-react-swc": "^3.7.2",
+    "autoprefixer": "^10.4.17",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.1",
+    "vite": "^5.4.11",
+    "vite-plugin-node-polyfills": "^0.22.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "bigint-buffer"
+    ]
+  }
+}

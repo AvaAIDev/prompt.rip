@@ -1,0 +1,64 @@
+version: "3"
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: back-end
+    working_dir: /usr/src/app/backend
+    networks:
+      - app-network
+    tty: true
+    ports:
+      - "8001:8001"
+    command: npm start
+    environment:
+      - NODE_ENV={NODE_ENV}
+      - DB_URI=${DB_URI}
+      - OPEN_AI_SECRET_KEY=${OPEN_AI_SECRET_KEY}
+      - JWT_SECRET=${JWT_SECRET}
+      - OPEN_AI_SECRET=${OPEN_AI_SECRET}
+      - RPC_KEY=${RPC_KEY}
+      - COINGECKO_API_KEY=${COINGECKO_API_KEY}
+      - DEVNET_PROGRAM_ID=${DEVNET_PROGRAM_ID}
+      - AGENT_GENERATOR_ID=${AGENT_GENERATOR_ID}
+      - AGENT_GENERATOR_THREAD_ID=${AGENT_GENERATOR_THREAD_ID}
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: front-end
+    working_dir: /usr/src/app/frontend
+    networks:
+      - app-network
+    tty: true
+    environment:
+      - VITE_SOLANA_DEVNET_RPC_URL=${VITE_SOLANA_DEVNET_RPC_URL}
+      - VITE_SOLANA_MAINNET_RPC_URL=${VITE_SOLANA_MAINNET_RPC_URL}
+      - VITE_PRIVY_APP_ID=${VITE_PRIVY_APP_ID}
+      - VITE_MODE=${NODE_ENV}
+    ports:
+      - "3000:3000"
+    command: npm run preview
+    depends_on:
+      - backend
+
+  nginx:
+    build:
+      context: nginx
+    container_name: nginx
+    restart: always
+    tty: true
+    ports:
+      - "80:80"
+    networks:
+      - app-network
+    depends_on:
+      - backend
+      - frontend
+
+networks:
+  app-network:
+    driver: bridge

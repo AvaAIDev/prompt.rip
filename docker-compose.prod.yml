@@ -1,0 +1,8 @@
+services:
+  backend:
+    command: npm start
+    volumes:
+      - ./backend/secrets/solana-keypair.json:/usr/src/app/backend/secrets/solana-keypair.json:ro
+
+  frontend:
+    command: npm run preview

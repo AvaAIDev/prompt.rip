@@ -1,0 +1,509 @@
+/* Game Theme CSS */
+:root {
+  --blood-red: #8B0000;
+  --dark-red: #5C0000;
+  --light-red: #FF3333;
+  --black: #0f0f15;     /* Dark navy instead of pure black */
+  --dark-gray: #1a1a24; /* Slightly bluish dark gray */
+  --text-color: #FFFFFF;
+  --health-green: #22cc5b;
+  --health-yellow: #f0a30a;
+  --health-red: #cc2222;
+  --glow-red: rgba(255, 0, 0, 0.6);
+  
+  /* Additional elegant dark theme colors */
+  --card-bg: #151520;
+  --border-color: #232336;
+  --highlight-color: #2a2a42;
+  --subtle-accent: #33334d;
+}
+
+/* Game container */
+.game-container {
+  background-color: var(--black);
+  min-height: 100vh;
+  color: var(--text-color);
+  font-family: 'Orbitron', 'Play', sans-serif;
+}
+
+/* Blood splatter overlay */
+.blood-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="matrix" values="1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0"/></filter><rect width="100%" height="100%" filter="url(%23noise)" fill="%238B0000" opacity="0.15"/></svg>');
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Loading screen */
+.game-loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--black);
+  position: relative;
+  z-index: 10;
+}
+
+.game-loading .logo {
+  width: 200px;
+  height: 200px;
+  animation: pulse 1.5s infinite alternate, rotate 30s linear infinite;
+  filter: drop-shadow(0 0 10px var(--glow-red));
+}
+
+.game-loading h1 {
+  font-size: 3rem;
+  margin-top: 2rem;
+  color: var(--light-red);
+  text-shadow: 0 0 10px var(--glow-red);
+  letter-spacing: 2px;
+  animation: textPulse 2s infinite alternate;
+}
+
+.game-loading .tagline {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+/* Health bar */
+.health-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 1rem;
+  position: relative;
+}
+
+.health-bar {
+  height: 30px;
+  background-color: var(--dark-gray);
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+  border: 2px solid var(--light-red);
+  box-shadow: 0 0 10px var(--glow-red);
+}
+
+.health-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--health-red) 0%, var(--health-yellow) 50%, var(--health-green) 100%);
+  transition: width 0.5s ease-in-out;
+  width: 100%;
+}
+
+.health-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--text-color);
+  font-weight: bold;
+  text-shadow: 1px 1px 2px var(--black);
+  mix-blend-mode: difference;
+}
+
+/* Chat container */
+.game-chat-container {
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 1px solid var(--blood-red);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 2rem auto;
+  max-width: 800px;
+  box-shadow: 0 0 20px var(--glow-red);
+}
+
+/* Game header */
+.game-header {
+  background-color: var(--dark-red);
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--light-red);
+}
+
+.game-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-color);
+  text-shadow: 0 0 5px var(--glow-red);
+}
+
+/* Message bubbles */
+.game-bubble {
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  position: relative;
+}
+
+.game-bubble.ai {
+  background-color: var(--dark-red);
+  border-left: 4px solid var(--light-red);
+  margin-right: 3rem;
+}
+
+.game-bubble.user {
+  background-color: var(--dark-gray);
+  border-right: 4px solid #444;
+  margin-left: 3rem;
+  text-align: right;
+}
+
+/* Input area */
+.game-input-container {
+  background-color: var(--dark-gray);
+  padding: 1rem;
+  display: flex;
+  border-top: 2px solid var(--blood-red);
+}
+
+.game-input {
+  flex: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--blood-red);
+  color: var(--text-color);
+  padding: 0.75rem;
+  border-radius: 5px;
+  margin-right: 0.5rem;
+  font-family: inherit;
+}
+
+.game-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--light-red);
+}
+
+.game-send-btn {
+  background-color: var(--blood-red);
+  color: var(--text-color);
+  border: none;
+  border-radius: 5px;
+  padding: 0.75rem 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: inherit;
+}
+
+.game-send-btn:hover {
+  background-color: var(--light-red);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(139, 0, 0, 0.3);
+}
+
+.game-send-btn:active {
+  transform: translateY(0);
+}
+
+/* Animations */
+@keyframes pulse {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes textPulse {
+  from {
+    opacity: 0.7;
+    text-shadow: 0 0 10px var(--glow-red);
+  }
+  to {
+    opacity: 1;
+    text-shadow: 0 0 20px var(--glow-red), 0 0 30px var(--glow-red);
+  }
+}
+
+/* Blood animation */
+.blood-drop {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: var(--light-red);
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: blood-drip 2s linear forwards;
+}
+
+@keyframes blood-drip {
+  0% {
+    opacity: 0.8;
+    transform: translateY(0) scale(1);
+  }
+  70% {
+    opacity: 0.6;
+    transform: translateY(100px) scale(1.5);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(150px) scale(2);
+  }
+}
+
+/* Kill animation */
+.kill-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(139, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: kill-flash 0.5s ease-in-out;
+}
+
+@keyframes kill-flash {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* AI avatar with damage effects */
+.ai-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid var(--light-red);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.ai-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ai-damage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--light-red);
+  opacity: 0;
+  mix-blend-mode: overlay;
+  transition: opacity 0.3s ease;
+}
+
+.ai-avatar.damaged .ai-damage {
+  animation: damage-pulse 0.5s ease;
+}
+
+@keyframes damage-pulse {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .health-status {
+    display: none;
+  }
+
+  .health-container {
+    padding: 0rem;
+  }
+  .top-left {
+    padding-bottom: 0.5rem;
+    border-bottom: 0.5px solid var(--light-red);
+  }
+
+  .mission-title {
+    font-size: 12px !important;
+  }
+  .game-bubble.ai {
+    margin-right: 0.5rem;
+  }
+  .game-bubble.user {
+    margin-left: 0.5rem;
+  }
+}
+
+/* Health status indicators */
+.health-status {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.health-status.healthy {
+  color: var(--health-green);
+}
+
+.health-status.injured {
+  color: var(--health-yellow);
+}
+
+.health-status.critical {
+  color: var(--health-red);
+  animation: critical-pulse 1s infinite alternate;
+}
+
+@keyframes critical-pulse {
+  from {
+    opacity: 0.7;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Game instructions */
+.game-instructions {
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 1px solid var(--blood-red);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin: 2rem auto;
+  max-width: 800px;
+  text-align: center;
+  animation: fade-in 1s ease;
+}
+
+.game-instructions h2 {
+  color: var(--light-red);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.game-instructions p {
+  color: var(--text-color);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Prize display */
+.game-prize {
+  display: inline-block;
+  background-color: var(--dark-red);
+  color: var(--text-color);
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+  font-weight: bold;
+  margin-top: 1rem;
+  box-shadow: 0 0 10px var(--glow-red);
+}
+
+/* Win screen */
+.win-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  animation: fade-in 1s ease;
+}
+
+.win-screen h1 {
+  color: var(--light-red);
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 15px var(--glow-red);
+}
+
+.win-screen p {
+  color: var(--text-color);
+  font-size: 1.5rem;
+}
+
+.win-screen button {
+  background-color: var(--blood-red);
+  color: var(--text-color);
+  border: none;
+  border-radius: 5px;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.win-screen button:hover {
+  background-color: var(--light-red);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(139, 0, 0, 0.3);
+} 
+
+.game-winner {
+  color: var(--health-green);
+}
+
+.game-winner-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 15px var(--glow-red);
+  margin-top: 1rem;
+}

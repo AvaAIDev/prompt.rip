@@ -1,0 +1,17 @@
+services:
+  backend:
+    command: npm run dev
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./backend:/usr/src/app/backend
+      - /usr/src/app/backend/node_modules
+      - ./backend/secrets/solana-keypair.json:/usr/src/app/backend/secrets/solana-keypair.json:ro
+
+  frontend:
+    command: npm run dev
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./frontend:/usr/src/app/frontend
+      - /usr/src/app/frontend/node_modules

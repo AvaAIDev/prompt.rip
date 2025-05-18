@@ -1,0 +1,347 @@
+/* Mobile Header Hamburger Menu */
+
+.mobile-menu-toggle {
+  display: none; /* Hidden by default */
+}
+
+.hamburger-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-top-bar {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  background-color: var(--black);
+  border-bottom: 1px solid var(--border-color, #232336);
+}
+
+.header-fixed-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+/* Mobile menu title */
+.mobile-menu-title {
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: none; /* Hidden by default, only shown in mobile */
+}
+
+/* Close button for mobile menu */
+.mobile-menu-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.mobile-menu-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Hide desktop elements in mobile view */
+.desktop-only {
+  display: none;
+}
+
+/* Section titles for mobile */
+.section-title {
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  color: #ffffff;
+  letter-spacing: 1px;
+  text-align: left;
+}
+
+/* Mobile styling */
+@media (max-width: 768px) {
+  /* Hide desktop-only elements in mobile view */
+  .desktop-only {
+    display: none !important;
+  }
+  
+  .game-top-bar {
+    position: relative;
+    flex-direction: column;
+    padding: 10px 0;
+  }
+  
+  .header-fixed-content {
+    z-index: 10;
+    display: flex;
+    align-items: center;
+  }
+  
+  .header-fixed-content .main-logo-container {
+    margin-right: 8px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  .header-fixed-content .main-logo-container img {
+    width: 45px;
+    height: auto;
+  }
+  
+  .header-fixed-content .mission-wrapper {
+    flex: 1; /* Take remaining space */
+    min-width: 0; /* Allow text to truncate if needed */
+  }
+  
+  .header-fixed-content .mission-title {
+    font-size: 14px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+  }
+  
+  .mobile-menu-toggle {
+    display: block;
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    z-index: 100;
+  }
+  
+  /* Show menu title in mobile only */
+  .mobile-menu-title {
+    display: block;
+    color: #fff;
+    text-align: center;
+    margin-top: 5px;
+    position: relative;
+  }
+  
+  /* Hide the desktop version of top-left in mobile view */
+  .header-collapsible-content .top-left {
+    display: none;
+  }
+  
+  /* Slide-in menu from the right */
+  .header-collapsible-content {
+    position: fixed;
+    top: 0;
+    right: -320px; /* Start off-screen */
+    width: 300px;
+    height: 100%;
+    background-color: var(--black);
+    overflow-y: auto;
+    transition: right 0.3s ease, box-shadow 0.3s ease;
+    z-index: 999;
+    padding: 60px 20px 30px;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  }
+  
+  /* Show the collapsible content when mobile menu is open */
+  .header-collapsible-content.mobile-menu-open {
+    right: 0;
+    box-shadow: -8px 0 20px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Mobile menu content structure */
+  .mobile-menu-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  /* 1. Account section at the top */
+  .mobile-account-section {
+    margin-bottom: 30px;
+  }
+  
+  /* 2. Game stats in the middle */
+  .mobile-stats-section {
+    margin-bottom: 30px;
+    flex: 1;
+  }
+  
+  .mobile-stats-section .game-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+  }
+  
+  .mobile-stats-section .stats-item {
+    background: var(--card-bg, #151520);
+    border-radius: 8px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: background 0.2s ease;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid var(--border-color, #232336);
+  }
+  
+  .mobile-stats-section .stats-item:hover {
+    background: var(--highlight-color, #2a2a42);
+  }
+  
+  .mobile-stats-section .stats-value {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 8px;
+    width: 100%;
+    text-align: left;
+  }
+  
+  .mobile-stats-section .stats-label {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.7;
+    width: 100%;
+    text-align: left;
+  }
+  
+  /* 3. Social links at the bottom */
+  .mobile-social-section {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    border-top: 1px solid var(--border-color, #232336);
+    align-items: flex-start;
+  }
+
+  .social-icons-container {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    width: 100%;
+    margin-top: 5px;
+  }
+  
+  .mobile-social-section .social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    border-radius: 50%;
+    background-color: var(--highlight-color, #2a2a42);
+    transition: background-color 0.3s ease;
+    width: auto;
+    height: auto;
+  }
+  
+  
+  /* Adjust mission text for mobile */
+  .mission-wrapper {
+    max-width: 100%;
+  }
+  
+  .mission-description {
+    display: none; /* Hide description on very small screens */
+  }
+  
+  /* Add backdrop when mobile menu is open */
+  .menu-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 998;
+  }
+  
+  .menu-backdrop.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+/* Small mobile - hide more content */
+@media (max-width: 480px) {
+  .header-fixed-content .main-logo-container img {
+    width: 38px;
+  }
+  
+  .header-fixed-content .mission-title {
+    font-size: 12px !important;
+  }
+}
+
+/* Desktop styling - ensure regular layout on larger screens */
+@media (min-width: 769px) {
+  .game-top-bar {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .header-fixed-content {
+    display: none; /* Hide the duplicate content on desktop */
+  }
+  
+  .header-collapsible-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    position: static;
+  }
+  
+  /* Show desktop elements in desktop view */
+  .desktop-only {
+    display: flex;
+  }
+  
+  /* Hide mobile-only elements in desktop view */
+  .mobile-menu-content,
+  .mobile-menu-close {
+    display: none;
+  }
+  
+  /* Fix the top-left layout to be inline on desktop */
+  .header-collapsible-content .top-left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .header-collapsible-content .top-left .mission-wrapper {
+    margin-left: 10px;
+  }
+  
+  /* Position social icons properly on desktop */
+  .header-collapsible-content .top-left .social-links {
+    margin-left: 20px;
+  }
+  
+  /* Hide mobile menu title in desktop */
+  .mobile-menu-title {
+    display: none;
+  }
+} 
