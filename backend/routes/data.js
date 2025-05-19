@@ -170,39 +170,6 @@ router.get("/social-bounties", async (req, res) => {
   }
 });
 
-router.post("/social-bounties/:id/submissions", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const { url } = req.body;
-
-    if (!url) {
-      return res.status(400).json({ error: "URL is required" });
-    }
-
-    // Validate URL format
-    try {
-      new URL(url);
-    } catch (err) {
-      return res.status(400).json({ error: "Invalid URL format" });
-    }
-
-    const bounty = await DatabaseService.getBountyById(id);
-    if (bounty.jailbreak?.url) {
-      return res.status(400).json({ error: "Bounty already solved" });
-    }
-    const result = await DatabaseService.addBountySubmission(id, url);
-
-    if (!result) {
-      return res.status(404).json({ error: "Bounty not found" });
-    }
-
-    res.json({ message: "Submission added successfully", url });
-  } catch (error) {
-    console.error("Error adding submission:", error);
-    res.status(500).json({ error: "Failed to add submission" });
-  }
-});
-
 router.get("/social-bounties/:id", async (req, res) => {
   try {
     const { id } = req.params;

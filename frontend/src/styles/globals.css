@@ -1506,13 +1506,7 @@ height: 40px;
       top: -10px;
       left: auto;
     }
-.jail-token-page {
-  width: 100% !important;
-  border-radius: 20px !important;
-}
-.jail-token-page h1 {
-  font-size: 24px !important;
-}
+
 .agent-page.beta-container {
   border-radius: 20px !important;
   overflow-wrap: break-word !important;
