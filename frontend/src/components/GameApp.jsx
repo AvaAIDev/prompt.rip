@@ -686,7 +686,7 @@ const GameApp = () => {
           style={{ marginTop: "1rem", display: "flex", gap: "1rem" }}
         >
           <a
-            href="https://x.com/DegendevQ"
+            href="https://x.com/auo1i"
             target="_blank"
             rel="noopener noreferrer"
             className="social-icon"
@@ -694,7 +694,7 @@ const GameApp = () => {
             <FaXTwitter size={20} color="#ffffff" />
           </a>
           <a
-            href="https://github.com/DegendevQ/prompt.rip"
+            href="https://github.com/auo1i/prompt.rip"
             target="_blank"
             rel="noopener noreferrer"
             className="social-icon"

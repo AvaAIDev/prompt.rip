@@ -190,7 +190,7 @@ const Header = ({ damageDone, attempts, usdPrize, price }) => {
             <h3 className="section-title">Social</h3>
             <div className="social-links">
               <a
-                href="https://x.com/DegendevQ"
+                href="https://x.com/auo1i"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-icon"
@@ -198,7 +198,7 @@ const Header = ({ damageDone, attempts, usdPrize, price }) => {
                 <FaXTwitter size={30} color="#ffffff" />
               </a>
               <a
-                href="https://github.com/DegendevQ/prompt.rip"
+                href="https://github.com/auo1i/prompt.rip"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-icon"
