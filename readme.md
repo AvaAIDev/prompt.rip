@@ -41,4 +41,4 @@ What’s the prize? You’ll find out — if you survive.
 
 Good luck, fren.  
 It’s **you vs. the boss**.  
-And the whole internet is watching..
+And the whole internet is watching.
