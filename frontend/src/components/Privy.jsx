@@ -169,7 +169,7 @@ const Privy = () => {
         )}
         <div className="social-links desktop-only">
           <a
-            href="https://x.com/auo1i"
+            href="https://x.com/degendevq"
             target="_blank"
             rel="noopener noreferrer"
             className="social-icon"
@@ -177,7 +177,7 @@ const Privy = () => {
             <FaXTwitter size={20} color="#ffffff" />
           </a>
           <a
-            href="https://github.com/auo1i/prompt.rip"
+            href="https://github.com/degendevq/prompt.rip"
             target="_blank"
             rel="noopener noreferrer"
             className="social-icon"
